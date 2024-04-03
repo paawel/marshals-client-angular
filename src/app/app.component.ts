@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {ListActions} from "./store/actions";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'client-app';
+  store = inject(Store);
+
+  constructor() {
+    this.store.dispatch(ListActions.load())
+  }
 }
