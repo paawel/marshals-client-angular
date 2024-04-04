@@ -48,12 +48,15 @@
   <div>
     <mat-form-field>
       <mat-label>Battles</mat-label>
-      <mat-select multiple>
+      <mat-select multiple formControlName="battles">
         @for (battle of battles$ | async; track battle) {
-          <mat-option [value]="battle">{{battle.name}}</mat-option>
+          <mat-option [value]="battle">{{ battle.name }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
   </div>
 
+  <div>
+    <button type="submit" mat-flat-button color="primary" [innerText]="'Submit'"></button>
+  </div>
 </form>

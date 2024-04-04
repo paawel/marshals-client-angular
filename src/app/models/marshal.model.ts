@@ -5,5 +5,5 @@ export interface MarshalModel {
   shortName: string;
   placeOfBirth: string;
   dateOfBirth: Date;
-  battles?: []
+  battles?: [];
 }

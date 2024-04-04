@@ -1,12 +1,12 @@
-import {inject, Inject, Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {MarshalModel} from "../../models/marshal.model";
-import {APP_CONFIG, IAppConfig} from "../../app.module";
-import {HttpClient} from "@angular/common/http";
-import {BattleModel} from "../../models/battle.model";
+import { inject, Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MarshalModel } from '../../models/marshal.model';
+import { APP_CONFIG, IAppConfig } from '../../app.module';
+import { HttpClient } from '@angular/common/http';
+import { BattleModel } from '../../models/battle.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
   http: HttpClient = inject(HttpClient);
@@ -19,7 +19,16 @@ export class HttpService {
   }
 
   createNewMarshal(data: MarshalModel): Observable<MarshalModel> {
-    return this.http.post<MarshalModel>(this.config.api_url + '/marshals', data);
+    const battles = data.battles!.map(el => el['name']);
+    const id = (parseInt(String(Date.now() + Math.random()))).toString();
+
+    const dataObj = {
+      ...data,
+      battles,
+      id
+    };
+
+    return this.http.post<MarshalModel>(this.config.api_url + '/marshals', dataObj);
   }
 
   getAllBattles(): Observable<Array<BattleModel>> {

@@ -1,10 +1,8 @@
-import {Component} from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'marshals-profile',
-  templateUrl: './marshals-profile.component.html',
-  styleUrl: './marshals-profile.component.scss'
+  selector: "marshals-profile",
+  templateUrl: "./marshals-profile.component.html",
+  styleUrl: "./marshals-profile.component.scss",
 })
-export class MarshalsProfileComponent {
-
-}
+export class MarshalsProfileComponent {}
